@@ -18,14 +18,14 @@ public class Item : MonoBehaviour
 
     private void OnEnable()
     {
-        _buyButton.onClick.AddListener(CheckCakeState);    
         _buyButton.onClick.AddListener(OnBuyButtonClick);    
+        _buyButton.onClick.AddListener(CheckCakeState);    
     }
 
     private void OnDisable() 
     {
-        _buyButton.onClick.RemoveListener(CheckCakeState);    
         _buyButton.onClick.RemoveListener(OnBuyButtonClick);    
+        _buyButton.onClick.RemoveListener(CheckCakeState);    
     }
 
     public void SetCakeItem(CakeShopItem cakeItem)
