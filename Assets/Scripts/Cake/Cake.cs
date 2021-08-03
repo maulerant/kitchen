@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Cake : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Cake : MonoBehaviour
     private int _createdLayers;
 
     public bool Done => _createdLayers == _layers.Length;
+    public int Profit => _profit;
+
+    public event UnityAction CakeDone;
 
     private void Start() 
     {
@@ -24,7 +28,7 @@ public class Cake : MonoBehaviour
         {
             if(Done)
             {
-                Debug.Log("Cake baked");
+                CakeDone?.Invoke();
             }
         }
 
