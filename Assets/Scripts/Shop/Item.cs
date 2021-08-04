@@ -44,6 +44,7 @@ public class Item : MonoBehaviour
     private void OnBuyButtonClick()
     {
         BuyCake?.Invoke(this, _cakeItem);
+        _cakeItem.Buy();
     }
 
     private void CheckCakeState()

@@ -15,4 +15,4 @@ MonoBehaviour:
   _cake: {fileID: 6038884999886127199, guid: a3bed59659f93d3b9a34b13405af992b, type: 3}
   _label: Perfect
   _icon: {fileID: -3600141727497118292, guid: 4aa33644d4d4a09d597f831954d774b6, type: 3}
-  _price: 50
+  _price: 5

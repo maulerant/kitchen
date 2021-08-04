@@ -14,6 +14,7 @@ public class Cake : MonoBehaviour
     public int Profit => _profit;
 
     public event UnityAction CakeDone;
+    public event UnityAction<float, float> CakeLayerProgresses;
 
     private void Start() 
     {
@@ -39,10 +40,12 @@ public class Cake : MonoBehaviour
         CakeLayer cakeLayer = _layers[_createdLayers];
 
         cakeLayer.IncreaseCookingProgress();
-        if(cakeLayer.TryCookLayer()) {
-            _createdLayers++;
-            return true;
+        CakeLayerProgresses?.Invoke(cakeLayer.CookingProgress, cakeLayer.ClicksBeforeCooking);
+
+        if(!cakeLayer.TryCookLayer()) {
+            return false;
         }
-        return false;
+        _createdLayers++;
+        return true;
     }
 }

@@ -11,6 +11,7 @@ public class CakeLayer : MonoBehaviour
     private Color _layerColor;
 
     public int CookingProgress { get; private set; }
+    public int ClicksBeforeCooking => _clicksBeforeCooking;
 
     private void Awake() {
         _spriteRenderer = GetComponent<SpriteRenderer>();

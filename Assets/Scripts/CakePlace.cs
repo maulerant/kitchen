@@ -7,6 +7,7 @@ public class CakePlace : MonoBehaviour
 {
     [SerializeField] private Cake _cake;
     [SerializeField] private ClickerZone _clickerZone;
+    [SerializeField] private CookingProgress _cookingProgress;
 
     public event UnityAction<Cake> CakeReadyForCollect;
 
@@ -15,12 +16,15 @@ public class CakePlace : MonoBehaviour
         _cake = Instantiate(cake, transform);
         _clickerZone.Click += _cake.OnClick;
         _cake.CakeDone += OnCakeDone;
+        _cake.CakeLayerProgresses += _cookingProgress.OnCakeLayerCookingProgress;
     }
 
     public void RemoveCake(Cake cake)
     {
         _clickerZone.Click -= _cake.OnClick;
         _cake.CakeDone -= OnCakeDone;
+        _cake.CakeLayerProgresses -= _cookingProgress.OnCakeLayerCookingProgress;
+        _cookingProgress.OnCakeLayerCookingProgress(0, 100);
         Destroy(cake);
     }
 
@@ -28,5 +32,4 @@ public class CakePlace : MonoBehaviour
     {
         CakeReadyForCollect?.Invoke(_cake);
     }
-
 }
